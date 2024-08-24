@@ -1625,7 +1625,7 @@ run(void)
 void
 runAutostart(void) {
 	//system("killall -q dwmblocks; dwmblocks &");
-    system("cd ~/dotfiles/.dwm; ./autostart.sh &");
+    system("cd ~/personal/projects/dwm; ./autostart.sh &");
 }
 
 void
