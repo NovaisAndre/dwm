@@ -18,12 +18,13 @@ static int topbar             = 0;        /* 0 means bottom bar */
 //static char *fonts[]          = { "monospace:size=10", "NotoColorEmoji:pixelsize=10:antialias=true:autohint=true"  };
 static char *fonts[]          = { "monospace:size=12", "System San Francisco Display:pixelsize=12:antialias=true:autohint=true"  };
 static char normbgcolor[]           = "#1a1b26";  // Darker background
-static char normbordercolor[]       = "#414868";  // Border
+static char normbordercolor[]       = "#0f172a";  // Dark Marine Border
+                                                  //
 static char normfgcolor[]           = "#c0caf5";  // Foreground text
 static char selfgcolor[]            = "#a9b1d6";  // Selected text
 //static char selbordercolor[]        = "#7aa2f7";  // Light Selected border
 //static char selbordercolor[]       = "#12131a";  // Dark Selected Border
-static char selbordercolor[]       = "#0f172a";  // Dark Marine Blue Selected Border
+static char selbordercolor[]       = "#414868";  // Selected Border
 //This color was messing up the bar so I just put the normal bg color                                                   // 
 //static char selbgcolor[]            = "#2ac3de";  // Selected background
 static char selbgcolor[]            = "#1a1b26";  // Selected background
