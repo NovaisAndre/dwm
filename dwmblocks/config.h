@@ -21,7 +21,7 @@ static const Block blocks[] = {
 	//{"",	"sb-mailbox",	180,	12},
 	//{"",	"sb-nettraf",	1,	16},
 	//{"",	"sb-volume",	0,	10},
-	{"♪",	"volume",	0,	10},
+	//{"♪",	"volume",	0,	10},
 	{"",	"wifi",	5,	4},
 	{"",	"sb-battery",	5,	3},
 	{"",	"sb-clock",	1,	1},
