@@ -281,10 +281,11 @@ static const Key keys[] = {
 	//{ MODKEY,			XK_Scroll_Lock, spawn,                 SHCMD("killall screenkey || screenkey &") },
 
 	{ 0, XF86XK_AudioMute,                         spawn,                  SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle") },
+	{ MODKEY, XF86XK_AudioMute,                         spawn,                  SHCMD("~/dotfiles/.scripts/toggle-audio-profile.sh") },
 	{ 0, XF86XK_AudioRaiseVolume,                  spawn,                  SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +3%") },
-	{ 0, XF86XK_AudioRaiseVolume|ShiftMask,        spawn,                  SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +20%") },
+	{ ShiftMask, XF86XK_AudioRaiseVolume        spawn,                  SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +20%") },
 	{ 0, XF86XK_AudioLowerVolume,                  spawn,                  SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -3%") },
-    { 0, XF86XK_AudioLowerVolume|ShiftMask,        spawn,                  SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -20%") },
+    { ShiftMask, XF86XK_AudioLowerVolume,        spawn,                  SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -20%") },
 	//{ 0, XF86XK_AudioPrev,                         spawn,                  {.v = (const char*[]){ "mpc", "prev", NULL } } },
 	//{ 0, XF86XK_AudioNext,                         spawn,                  {.v = (const char*[]){ "mpc",  "next", NULL } } },
 	//{ 0, XF86XK_AudioPause,                        spawn,                  {.v = (const char*[]){ "mpc", "pause", NULL } } },
