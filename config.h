@@ -283,7 +283,7 @@ static const Key keys[] = {
 	{ 0, XF86XK_AudioMute,                         spawn,                  SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle") },
 	{ MODKEY, XF86XK_AudioMute,                         spawn,                  SHCMD("~/dotfiles/.scripts/toggle-audio-profile.sh") },
 	{ 0, XF86XK_AudioRaiseVolume,                  spawn,                  SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +3%") },
-	{ ShiftMask, XF86XK_AudioRaiseVolume        spawn,                  SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +20%") },
+	{ ShiftMask, XF86XK_AudioRaiseVolume,        spawn,                  SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +20%") },
 	{ 0, XF86XK_AudioLowerVolume,                  spawn,                  SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -3%") },
     { ShiftMask, XF86XK_AudioLowerVolume,        spawn,                  SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -20%") },
 	//{ 0, XF86XK_AudioPrev,                         spawn,                  {.v = (const char*[]){ "mpc", "prev", NULL } } },
@@ -295,6 +295,7 @@ static const Key keys[] = {
 	//{ 0, XF86XK_AudioForward,                      spawn,                  {.v = (const char*[]){ "mpc", "seek", "+10", NULL } } },
 	//{ 0, XF86XK_AudioMedia,                        spawn,                  {.v = (const char*[]){ TERMINAL, "-e", "ncmpcpp", NULL } } },
 	//{ 0, XF86XK_AudioMicMute,                      spawn,                  SHCMD("pactl set-source-mute @DEFAULT_SOURCE@ toggle") },
+	//{ 0, XF86RFKill,                      spawn,                  SHCMD("pactl set-source-mute @DEFAULT_SOURCE@ toggle") },
 	/* { 0, XF86XK_PowerOff,                       spawn,                  {.v = (const char*[]){ "sysact", NULL } } }, */
 	{ 0, XF86XK_Calculator,                        spawn,                  {.v = (const char*[]){ TERMINAL, "-e", "bc", "-l", NULL } } },
 	{ 0, XF86XK_Sleep,                             spawn,                  {.v = (const char*[]){ "sudo", "-A", "zzz", NULL } } },
