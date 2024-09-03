@@ -24,7 +24,7 @@ static int smartgaps          = 0;        /* 1 means no outer gap when there is 
 static int showbar            = 0;        /* 0 means no bar */
 static int topbar             = 0;        /* 0 means bottom bar */
 //static char *fonts[]          = { "monospace:size=10", "NotoColorEmoji:pixelsize=10:antialias=true:autohint=true"  };
-static char *fonts[]          = { "monospace:size=12", "System San Francisco Display:pixelsize=12:antialias=true:autohint=true"  };
+static char *fonts[]          = { "monospace:size=12", "System San Francisco Display:pixelsize=12:antialias=true:autohint=true", "-misc-kochi gothic-medium-r-normal-*-12-0-0-0-p-0-jisx0201.1976-0"  };
 static char normbgcolor[]           = "#1a1b26";  // Darker background
 static char normbordercolor[]       = "#0f172a";  // Dark Marine Border
                                                   //

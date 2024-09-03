@@ -9,5 +9,7 @@ redshift -l -3:-38 &
 xinput --set-prop 11 'Coordinate Transformation Matrix' 0.5 0 0 0 0.5 0 0 0 1 &
 xbindkeys &
 dwmblocks & 
+ibus-daemon -rxRd &
+
 
 exec dwm
