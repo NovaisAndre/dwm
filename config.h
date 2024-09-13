@@ -18,6 +18,8 @@ static unsigned int gappih    = 4;       /* horiz inner gap between windows */
 static unsigned int gappiv    = 2;       /* vert inner gap between windows */
 static unsigned int gappoh    = 4;       /* horiz outer gap between windows and screen edge */
 static unsigned int gappov    = 2;       /* vert outer gap between windows and screen edge */
+static const char *monitorcmd[]  = { "dwm-send-tag-to-monitor", NULL };
+
 
 static int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static int smartgaps          = 1;        /* 1 means no outer gap when there is only one window */
