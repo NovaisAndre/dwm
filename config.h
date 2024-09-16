@@ -12,13 +12,13 @@
 // static unsigned int gappoh    = 10;       /* horiz outer gap between windows and screen edge */
 // static unsigned int gappov    = 30;       /* vert outer gap between windows and screen edge */
 
-static unsigned int borderpx  = 3;        /* border pixel of windows */
-static unsigned int snap      = 3;       /* snap pixel */
-static unsigned int gappih    = 4;       /* horiz inner gap between windows */
-static unsigned int gappiv    = 2;       /* vert inner gap between windows */
-static unsigned int gappoh    = 4;       /* horiz outer gap between windows and screen edge */
-static unsigned int gappov    = 2;       /* vert outer gap between windows and screen edge */
-static const char *monitorcmd[]  = { "dwm-send-tag-to-monitor", NULL };
+const static unsigned int gapmodifier = 5;
+static unsigned int borderpx  = 5;                      /* border pixel of windows */
+static unsigned int snap      = 5 * gapmodifier;       /* snap pixel */
+static unsigned int gappih    = 6 * gapmodifier;       /* horiz inner gap between windows */
+static unsigned int gappiv    = 3 * gapmodifier;       /* vert inner gap between windows */
+static unsigned int gappoh    = 6 * gapmodifier;       /* horiz outer gap between windows and screen edge */
+static unsigned int gappov    = 4 * gapmodifier;       /* vert outer gap between windows and screen edge */
 
 
 static int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
@@ -29,13 +29,13 @@ static int topbar             = 0;        /* 0 means bottom bar */
 static char *fonts[]          = { "monospace:size=12", "System San Francisco Display:pixelsize=12:antialias=true:autohint=true", "-misc-kochi gothic-medium-r-normal-*-12-0-0-0-p-0-jisx0201.1976-0"  };
 static char normbgcolor[]           = "#1a1b26";  // Darker background
 //static char normbordercolor[]       = "#0f172a";  // Dark Marine Border
-static char normbordercolor[]       = "#1a1b26";  // from Chrome
+static char normbordercolor[]       = "#24283b";  // from Chrome
                                                   //
 static char normfgcolor[]           = "#c0caf5";  // Foreground text
 static char selfgcolor[]            = "#a9b1d6";  // Selected text
 //static char selbordercolor[]        = "#7aa2f7";  // Light Selected border
 //static char selbordercolor[]       = "#12131a";  // Dark Selected Border
-static char selbordercolor[]       = "#24283b";  // Selected Border
+static char selbordercolor[]       = "#1a1b26";  // Selected Border
 //static char selbordercolor[]       = "#414868";  // Selected Border
 //This color was messing up the bar so I just put the normal bg color                                                   // 
 //static char selbgcolor[]            = "#2ac3de";  // Selected background
@@ -156,25 +156,25 @@ static const Key keys[] = {
 	STACKKEYS(MODKEY|ShiftMask,                    push)
 	{ MODKEY,			XK_grave,      spawn,	               {.v = (const char*[]){ "dmenuunicode", NULL } } },
 
-//	TAGKEYS(			XK_1,          0)
-//	TAGKEYS(			XK_2,          1)
-//	TAGKEYS(			XK_3,          2)
-//	TAGKEYS(			XK_4,          3)
-//	TAGKEYS(			XK_5,          4)
-//	TAGKEYS(			XK_6,          5)
-//	TAGKEYS(			XK_7,          6)
-//	TAGKEYS(			XK_8,          7)
-//	TAGKEYS(			XK_9,          8)
+	TAGKEYS(			XK_1,          0)
+	TAGKEYS(			XK_2,          1)
+	TAGKEYS(			XK_3,          2)
+	TAGKEYS(			XK_4,          3)
+	TAGKEYS(			XK_5,          4)
+	TAGKEYS(			XK_6,          5)
+	TAGKEYS(			XK_7,          6)
+	TAGKEYS(			XK_8,          7)
+	TAGKEYS(			XK_9,          8)
 
-	TAGKEYS(			XK_exclam,          0)
-	TAGKEYS(			XK_braceleft,          1)
-	TAGKEYS(			XK_bracketleft,          2)
-	TAGKEYS(			XK_parenleft,          3)
-	TAGKEYS(			XK_equal,          4)
-	TAGKEYS(			XK_ampersand,          5)
-	TAGKEYS(			XK_parenright,          6)
-	TAGKEYS(			XK_bracketright,          7)
-	TAGKEYS(			XK_braceright,          8)
+	//TAGKEYS(			XK_exclam,          0)
+	//TAGKEYS(			XK_braceleft,          1)
+	//TAGKEYS(			XK_bracketleft,          2)
+	//TAGKEYS(			XK_parenleft,          3)
+	//TAGKEYS(			XK_equal,          4)
+	//TAGKEYS(			XK_ampersand,          5)
+	//TAGKEYS(			XK_parenright,          6)
+	//TAGKEYS(			XK_bracketright,          7)
+	//TAGKEYS(			XK_braceright,          8)
 
 	//{ MODKEY,			XK_0,	       view,                   {.ui = ~0 } },
 	{ MODKEY,			XK_asterisk,	       view,                   {.ui = ~0 } },
@@ -196,10 +196,10 @@ static const Key keys[] = {
 	//{ MODKEY|ShiftMask,		XK_e,          spawn,          SHCMD() },
 	//{ MODKEY,			XK_r,          spawn,                  SHCMD() },
 	//{ MODKEY|ShiftMask,		XK_r,          spawn,          SHCMD() },
-	{ MODKEY,			XK_t,          setlayout,              {.v = &layouts[0]} }, /* tile */
-	{ MODKEY|ShiftMask,		XK_t,          setlayout,              {.v = &layouts[1]} }, /* bstack */
-	{ MODKEY,			XK_y,          setlayout,              {.v = &layouts[2]} }, /* spiral */
-	{ MODKEY|ShiftMask,		XK_y,          setlayout,              {.v = &layouts[3]} }, /* dwindle */
+	{ MODKEY,			XK_y,          setlayout,              {.v = &layouts[0]} }, /* spiral */
+	{ MODKEY|ShiftMask,		XK_y,          setlayout,              {.v = &layouts[1]} }, /* dwindle */
+    { MODKEY,			XK_t,          setlayout,              {.v = &layouts[2]} }, /* tile */
+    { MODKEY|ShiftMask,		XK_t,          setlayout,              {.v = &layouts[3]} }, /* bstack */
 	{ MODKEY,			XK_u,          setlayout,              {.v = &layouts[4]} }, /* deck */
 	{ MODKEY|ShiftMask,		XK_u,          setlayout,              {.v = &layouts[5]} }, /* monocle */
 	{ MODKEY,			XK_i,          setlayout,              {.v = &layouts[6]} }, /* centeredmaster */
