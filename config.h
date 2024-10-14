@@ -13,7 +13,7 @@
 // static unsigned int gappov    = 30;       /* vert outer gap between windows and screen edge */
 
 const static unsigned int gapmodifier = 5;
-static unsigned int borderpx  = 5;                      /* border pixel of windows */
+static unsigned int borderpx  = 3;                      /* border pixel of windows */
 static unsigned int snap      = 5 * gapmodifier;       /* snap pixel */
 static unsigned int gappih    = 6 * gapmodifier;       /* horiz inner gap between windows */
 static unsigned int gappiv    = 3 * gapmodifier;       /* vert inner gap between windows */
