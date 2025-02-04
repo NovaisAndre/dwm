@@ -22,7 +22,7 @@ static unsigned int gappov    = 4 * gapmodifier;       /* vert outer gap between
 
 
 static int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
-static int smartgaps          = 1;        /* 1 means no outer gap when there is only one window */
+static int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static int showbar            = 0;        /* 0 means no bar */
 static int topbar             = 0;        /* 0 means bottom bar */
 //static char *fonts[]          = { "monospace:size=10", "NotoColorEmoji:pixelsize=10:antialias=true:autohint=true"  };
@@ -218,7 +218,7 @@ static const Key keys[] = {
 	{ MODKEY,			XK_a,          togglegaps,             {0} },
 	{ MODKEY|ShiftMask,		XK_a,          defaultgaps,            {0} },
 	{ MODKEY,			XK_s,          togglesticky,           {0} },
-	//{ MODKEY|ShiftMask,		XK_s,          spawn,                  SHCMD("") },
+	{ MODKEY|ShiftMask,		XK_s,          spawn,                  SHCMD("~/dotfiles/.scripts/ssh-list.sh") },
 	{ MODKEY,			XK_d,          spawn,                  SHCMD("rofi -modi drun,run -show drun" ) },
 	{ MODKEY,			XK_c,          spawn,                  {.v = (const char*[]){ "mate-calc", NULL } } },
 	//{ MODKEY|ShiftMask,		XK_d,          spawn,                  {.v = (const char*[]){ "passmenu", NULL } } },
@@ -249,7 +249,7 @@ static const Key keys[] = {
 	/* V is automatically bound above in STACKKEYS */
 	{ MODKEY,			XK_b,          togglebar,              {0} },
 	{ MODKEY|ShiftMask,		XK_b,          spawn,          SHCMD("python3 ~/dotfiles/.scripts/close_all.py") }, 
-	{ MODKEY,			XK_n,          spawn,                  SHCMD("dunstctl close-all")},
+	{ MODKEY,			XK_c,          spawn,                  SHCMD("dunstctl close-all")},
 	{ MODKEY|ShiftMask,	XK_n,          spawn,                  SHCMD("python3 ~/dotfiles/.scripts/showtime.py") },
 	//{ MODKEY,			XK_m,          spawn,                  SHCMD() },
 	{ MODKEY|ShiftMask,		XK_m,          spawn,              SHCMD("python3 ~/work/Productive-Notifications/macros/fightcade_macro.py") },
@@ -258,10 +258,10 @@ static const Key keys[] = {
     //{ MODKEY,			XK_period,     spawn,                  SHCMD() },
     //{ MODKEY|ShiftMask,		XK_period,     spawn,          SHCMD() },
  
-	{ MODKEY,			XK_Left,       focusmon,               {.i = -1 } },
-	{ MODKEY|ShiftMask,		XK_Left,       tagmon,                 {.i = -1 } },
-	{ MODKEY,			XK_Right,      focusmon,               {.i = +1 } },
-	{ MODKEY|ShiftMask,		XK_Right,      tagmon,                 {.i = +1 } },
+	{ MODKEY,			XK_j,       focusmon,               {.i = -1 } },
+	{ MODKEY|ShiftMask,		XK_j,       tagmon,                 {.i = -1 } },
+	{ MODKEY,			XK_k,      focusmon,               {.i = +1 } },
+	{ MODKEY|ShiftMask,		XK_k,      tagmon,                 {.i = +1 } },
 
 	{ MODKEY,			XK_Page_Up,    shiftview,              { .i = -1 } },
 	{ MODKEY|ShiftMask,		XK_Page_Up,    shifttag,               { .i = -1 } },
