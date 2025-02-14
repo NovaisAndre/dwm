@@ -22,7 +22,7 @@ static unsigned int gappov    = 4 * gapmodifier;       /* vert outer gap between
 
 
 static int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
-static int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
+static int smartgaps          = 1;        /* 1 means no outer gap when there is only one window */
 static int showbar            = 0;        /* 0 means no bar */
 static int topbar             = 0;        /* 0 means bottom bar */
 //static char *fonts[]          = { "monospace:size=10", "NotoColorEmoji:pixelsize=10:antialias=true:autohint=true"  };
@@ -88,14 +88,14 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 #include "vanitygaps.c"
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[@]",	spiral },               /* Fibonacci spiral */
-	{ "[\\]",	dwindle },              /* Decreasing in size right and leftward */
+    { "[M]",	monocle },              /* All windows on top of eachother */
+	{ "[D]",	deck },	                /* Master on left, slaves in monocle-like mode on right */
 
 	{ "[]=",	tile },	                /* Default: Master on left, slaves on right */
 	{ "TTT",	bstack },               /* Master on top, slaves on bottom */
 
-	{ "[D]",	deck },	                /* Master on left, slaves in monocle-like mode on right */
-	{ "[M]",	monocle },              /* All windows on top of eachother */
+	{ "[@]",	spiral },               /* Fibonacci spiral */
+	{ "[\\]",	dwindle },              /* Decreasing in size right and leftward */
 
 	{ "|M|",	centeredmaster },               /* Master in middle, slaves on sides */
 	{ ">M>",	centeredfloatingmaster },       /* Same but master floats */
@@ -196,16 +196,16 @@ static const Key keys[] = {
 	//{ MODKEY|ShiftMask,		XK_e,          spawn,          SHCMD() },
 	//{ MODKEY,			XK_r,          spawn,                  SHCMD() },
 	//{ MODKEY|ShiftMask,		XK_r,          spawn,          SHCMD() },
-	{ MODKEY,			XK_y,          setlayout,              {.v = &layouts[0]} }, /* spiral */
-	{ MODKEY|ShiftMask,		XK_y,          setlayout,              {.v = &layouts[1]} }, /* dwindle */
+    { MODKEY,			XK_u,          setlayout,              {.v = &layouts[0]} }, /* monocle */
+    { MODKEY|ShiftMask,		XK_u,          setlayout,          {.v = &layouts[1]} }, /* deck */
     { MODKEY,			XK_t,          setlayout,              {.v = &layouts[2]} }, /* tile */
-    { MODKEY|ShiftMask,		XK_t,          setlayout,              {.v = &layouts[3]} }, /* bstack */
-	{ MODKEY,			XK_u,          setlayout,              {.v = &layouts[4]} }, /* deck */
-	{ MODKEY|ShiftMask,		XK_u,          setlayout,              {.v = &layouts[5]} }, /* monocle */
+    { MODKEY|ShiftMask,		XK_t,          setlayout,          {.v = &layouts[3]} }, /* bstack */
+    { MODKEY,			XK_y,          setlayout,              {.v = &layouts[4]} }, /* spiral */
+    { MODKEY|ShiftMask,		XK_y,          setlayout,          {.v = &layouts[5]} }, /* dwindle */
 	{ MODKEY,			XK_i,          setlayout,              {.v = &layouts[6]} }, /* centeredmaster */
-	{ MODKEY|ShiftMask,		XK_i,          setlayout,              {.v = &layouts[7]} }, /* centeredfloatingmaster */
+	{ MODKEY|ShiftMask,		XK_i,          setlayout,          {.v = &layouts[7]} }, /* centeredfloatingmaster */
 	{ MODKEY,			XK_o,          incnmaster,             {.i = +1 } },
-	{ MODKEY|ShiftMask,		XK_o,          incnmaster,             {.i = -1 } },
+	{ MODKEY|ShiftMask,		XK_o,          incnmaster,         {.i = -1 } },
 
     // Screen Layouts
 	{ MODKEY,			XK_p,          spawn,                  SHCMD("~/.screenlayout/stacked.sh") },
