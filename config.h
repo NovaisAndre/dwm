@@ -255,6 +255,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_m,          spawn,              SHCMD("/home/andre/dotfiles/.scripts/macros/venv/bin/python ~/dotfiles/.scripts/macros/fightcade_macro.py") },
 	{ MODKEY,		        XK_m,          spawn,              SHCMD("/home/andre/dotfiles/.scripts/macros/venv/bin/python ~/dotfiles/.scripts/macros/fightcade_macro_notebook.py") },
     { MODKEY,			XK_comma,      spawn,                  SHCMD("/home/andre/dotfiles/.scripts/macros/venv/bin/python ~/dotfiles/.scripts/macros/getCursorPosition.py") },
+    { MODKEY|ShiftMask,			XK_comma,      spawn,          SHCMD("/home/andre/dotfiles/.scripts/macros/venv/bin/python ~/dotfiles/.scripts/macros/shorys.sh") },
     //{ MODKEY|ShiftMask,		XK_comma,      spawn,          SHCMD() },
     //{ MODKEY,			XK_period,     spawn,                  SHCMD() },
     //{ MODKEY|ShiftMask,		XK_period,     spawn,          SHCMD() },
