@@ -12,6 +12,8 @@ redshift -l -3:-38 &
 #xbindkeys &
 #dwmblocks & 
 # ibus-daemon -rxRd &
+xset s off
+xset s noblank
 
 
 exec dwm
