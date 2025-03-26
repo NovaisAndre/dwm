@@ -14,6 +14,7 @@ redshift -l -3:-38 &
 # ibus-daemon -rxRd &
 xset s off
 xset s noblank
+xset -dpms
 
 
 exec dwm
