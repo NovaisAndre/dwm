@@ -294,7 +294,6 @@ static pid_t winpid(Window w);
 
 
 /* variables */
-static int spawn_tag = -1;
 static const char broken[] = "broken";
 static char stext[256];
 static char rawstext[256];
@@ -1233,10 +1232,6 @@ manage(Window w, XWindowAttributes *wa)
 	} else {
 		c->mon = selmon;
 		applyrules(c);
-        if (spawn_tag >= 0) {
-            c->tags = spawn_tag; // Assign the stored workspace tag
-            spawn_tag = -1;      // Reset after use
-        }
 		term = termforwin(c);
 	}
 
@@ -1966,9 +1961,7 @@ extern char **environ;
 void
 spawn(const Arg *arg)
 {
-    spawn_tag = selmon->tagset[selmon->seltags]; // Store the workspace (tag) before launching
-
-    posix_spawnp(NULL, ((char **)arg->v)[0], NULL, NULL, (char **)arg->v, environ);
+	posix_spawnp(NULL, ((char **)arg->v)[0], NULL, NULL, (char **)arg->v, environ);
 }
 
 void
