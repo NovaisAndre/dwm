@@ -247,10 +247,10 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_x,          spawn,                  SHCMD("i3lock -f -c 1A1B26 -i ~/.wallpapers/.not-using/tokyo.png && systemctl suspend") }, 
 	//{ MODKEY,			XK_c,          spawn,                  {.v = (const char*[]){ TERMINAL, "-e", "profanity", NULL } } },
 	{ MODKEY,			XK_c,          spawn,                  {.v = (const char*[]){ "mate-calc", NULL } } },
-	/* { MODKEY|ShiftMask,		XK_c,          spawn,                  SHCMD("") }, */
+    { MODKEY|ShiftMask,		XK_c,          spawn,              SHCMD("~/dotfiles/.scripts/youtube-cross-fade.sh") }, 
 	/* V is automatically bound above in STACKKEYS */
 	{ MODKEY,			XK_b,          togglebar,              {0} },
-	{ MODKEY|ShiftMask,		XK_b,          spawn,          SHCMD("python3 ~/dotfiles/.scripts/close_all.py") }, 
+    { MODKEY|ShiftMask,		XK_b,          spawn,              SHCMD("~/dotfiles/.scripts/bt_menu.sh") }, 
 	{ MODKEY,			XK_c,          spawn,                  SHCMD("dunstctl close-all")},
 	{ MODKEY|ShiftMask,	XK_n,          spawn,                  SHCMD("python3 ~/dotfiles/.scripts/showtime.py") },
 	//{ MODKEY,			XK_m,          spawn,                  SHCMD() },
