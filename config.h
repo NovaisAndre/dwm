@@ -248,6 +248,7 @@ static const Key keys[] = {
 	//{ MODKEY,			XK_c,          spawn,                  {.v = (const char*[]){ TERMINAL, "-e", "profanity", NULL } } },
 	{ MODKEY,			XK_c,          spawn,                  {.v = (const char*[]){ "mate-calc", NULL } } },
     { MODKEY|ShiftMask,		XK_c,          spawn,              SHCMD("~/dotfiles/.scripts/youtube-cross-fade.sh") }, 
+    { MODKEY|ShiftMask|ControlMask,		XK_c,          spawn,  SHCMD("~/dotfiles/.scripts/youtube-cross-fade-start.sh") }, 
 	/* V is automatically bound above in STACKKEYS */
 	{ MODKEY,			XK_b,          togglebar,              {0} },
     { MODKEY|ShiftMask,		XK_b,          spawn,              SHCMD("~/dotfiles/.scripts/bt_menu.sh") }, 
