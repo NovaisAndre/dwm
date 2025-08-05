@@ -247,7 +247,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,		        XK_x,          spawn,                  SHCMD("i3lock -f -c 1A1B26 -i ~/.wallpapers/.not-using/tokyo.png && systemctl suspend") }, 
 	//{ MODKEY,			XK_c,          spawn,                  {.v = (const char*[]){ TERMINAL, "-e", "profanity", NULL } } },
 	{ MODKEY,			            XK_c,          spawn,                  {.v = (const char*[]){ "mate-calc", NULL } } },
-    { MODKEY|ShiftMask,		        XK_c,          spawn,              SHCMD("~/dotfiles/.scripts/youtube-cross-fade.sh") }, 
+    { MODKEY|ShiftMask,		        XK_c,          spawn,              SHCMD("~/dotfiles/.scripts/select-quotes.sh") }, 
     { MODKEY|ShiftMask|ControlMask,	XK_c,          spawn,  SHCMD("~/dotfiles/.scripts/youtube-cross-fade-start.sh") }, 
 	/* V is automatically bound above in STACKKEYS */
 	{ MODKEY,			            XK_b,          togglebar,              {0} },
