@@ -77,7 +77,9 @@ static const Rule rules[] = {
 	{ TERMCLASS,            "spcalc",       NULL,       	 SPTAG(1),    1,           1,          0,         -1 },
 	{ "discord",            NULL,           NULL,       	 1 << 7,      0,           0,          0,         -1 },
 	{ "telegram-desktop",   NULL,           NULL,       	 1 << 7,      0,           0,          0,         -1 },
-    { "google-chrome",      NULL,           NULL,            0,           0,          -1,          0,         -1 }
+    { "google-chrome",      NULL,           NULL,            0,           0,          -1,          0,         -1 },
+    //{ "GtkFileChooserDialog", NULL, NULL, 0, 1, -1 }
+
 
 };
 
