@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# tmux has-session -t fastterm 2>/dev/null || tmux new-session -d -s fastterm
+tmux has-session -t fastterm 2>/dev/null || tmux new-session -c ~ -d -s fastterm
 picom --config ~/dotfiles/.config/picom/picom.conf &
 ~/dotfiles/.scripts/cycle_wallpapers.sh &
 dunst &

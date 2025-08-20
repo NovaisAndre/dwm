@@ -124,7 +124,12 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static const char *termcmd[]  = { TERMINAL, NULL };
+// static const char *termcmd[]  = { TERMINAL, NULL };
+// static const char *termcmd[]  = { TERMINAL, "-e", "tmux", "new-window", "-t", "fastterm", NULL };
+static const char *termcmd[] = { TERMINAL, "-e", "sh", "-c", "tmux new-window -t fastterm; tmux attach -t fastterm", NULL };
+
+static const char *reusecmd[] = { TERMINAL, "-e", "tmux", "attach", "-t", "fastterm", NULL };
+
 
 /*
  * Xresources preferences to load at startup
@@ -239,7 +244,9 @@ static const Key keys[] = {
 	/* { MODKEY|ShiftMask,		XK_apostrophe, spawn,                  SHCMD("") }, */
 	{ MODKEY|ShiftMask,		        XK_apostrophe, togglesmartgaps,        {0} },
 	{ MODKEY,			            XK_Return,     spawn,                  {.v = termcmd } },
-	{ MODKEY|ShiftMask,		        XK_Return,     togglescratch,          {.ui = 0} },
+    { MODKEY|ShiftMask,             XK_Return,     spawn,                  {.v = reusecmd } },
+	// { MODKEY|ShiftMask,		        XK_Return,     togglescratch,          {.ui = 0} },
+
 
     // 3 - Third Row
 
