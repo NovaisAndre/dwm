@@ -213,7 +213,7 @@ static const Key keys[] = {
 
     // Screen Layouts
 	{ MODKEY|ControlMask,			XK_p,          spawn,              SHCMD("~/.screenlayout/stacked.sh") },
-	{ MODKEY|ShiftMask,		        XK_p,          spawn,              SHCMD("~/.screenlayout/monitor.sh") },
+	{ MODKEY|ShiftMask,		        XK_p,          spawn,              SHCMD("~/dotfiles/.scripts/cycle_displays.sh") },
 	{ MODKEY|ShiftMask|ControlMask, XK_p,          spawn,              SHCMD("~/.screenlayout/notebook.sh") },
 	//{ MODKEY,			            XK_backslash,  view,                   {0} },
 	//{ MODKEY|ShiftMask,		XK_backslash,  spawn,          SHCMD() }, 

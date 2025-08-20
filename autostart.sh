@@ -17,4 +17,4 @@ xset s noblank
 xset -dpms
 
 
-exec dwm
+# exec dwm
