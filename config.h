@@ -5,13 +5,6 @@
 #define BROWSER "google-chrome"
 
 /* appearance */
-// static unsigned int borderpx  = 3;        /* border pixel of windows */
-// static unsigned int snap      = 32;       /* snap pixel */
-// static unsigned int gappih    = 20;       /* horiz inner gap between windows */
-// static unsigned int gappiv    = 10;       /* vert inner gap between windows */
-// static unsigned int gappoh    = 10;       /* horiz outer gap between windows and screen edge */
-// static unsigned int gappov    = 30;       /* vert outer gap between windows and screen edge */
-
 const static unsigned int gapmodifier = 5;
 static unsigned int borderpx  = 3;                      /* border pixel of windows */
 static unsigned int snap      = 5 * gapmodifier;       /* snap pixel */
@@ -25,20 +18,13 @@ static int swallowfloating    = 0;        /* 1 means swallow floating windows by
 static int smartgaps          = 1;        /* 1 means no outer gap when there is only one window */
 static int showbar            = 0;        /* 0 means no bar */
 static int topbar             = 0;        /* 0 means bottom bar */
-//static char *fonts[]          = { "monospace:size=10", "NotoColorEmoji:pixelsize=10:antialias=true:autohint=true"  };
 static char *fonts[]          = { "monospace:size=12", "System San Francisco Display:pixelsize=12:antialias=true:autohint=true", "-misc-kochi gothic-medium-r-normal-*-12-0-0-0-p-0-jisx0201.1976-0"  };
 static char normbgcolor[]           = "#1a1b26";  // Darker background
-//static char normbordercolor[]       = "#0f172a";  // Dark Marine Border
 static char normbordercolor[]       = "#24283b";  // from Chrome
                                                   //
 static char normfgcolor[]           = "#c0caf5";  // Foreground text
 static char selfgcolor[]            = "#a9b1d6";  // Selected text
-//static char selbordercolor[]        = "#7aa2f7";  // Light Selected border
-//static char selbordercolor[]       = "#12131a";  // Dark Selected Border
 static char selbordercolor[]       = "#1a1b26";  // Selected Border
-//static char selbordercolor[]       = "#414868";  // Selected Border
-//This color was messing up the bar so I just put the normal bg color                                                   // 
-//static char selbgcolor[]            = "#2ac3de";  // Selected background
 static char selbgcolor[]            = "#1a1b26";  // Selected background
 static char *colors[][3] = {
        /*               fg           bg           border   */
@@ -175,15 +161,15 @@ static const Key keys[] = {
 //	TAGKEYS(			XK_8,          7)
 //	TAGKEYS(			XK_9,          8)
 
-	TAGKEYS(			XK_exclam,          0)
-	TAGKEYS(			XK_braceleft,          1)
-	TAGKEYS(			XK_bracketleft,          2)
-	TAGKEYS(			XK_parenleft,          3)
-	TAGKEYS(			XK_equal,          4)
-	TAGKEYS(			XK_ampersand,          5)
-	TAGKEYS(			XK_parenright,          6)
-	TAGKEYS(			XK_bracketright,          7)
-	TAGKEYS(			XK_braceright,          8)
+	TAGKEYS(			XK_exclam,  0)
+	TAGKEYS(			XK_braceleft,  1)
+	TAGKEYS(			XK_bracketleft,  2)
+	TAGKEYS(			XK_parenleft,  3)
+	TAGKEYS(			XK_equal,  4)
+	TAGKEYS(			XK_ampersand,  5)
+	TAGKEYS(			XK_parenright,  6)
+	TAGKEYS(			XK_bracketright,  7)
+	TAGKEYS(			XK_braceright,  8)
 
 	//{ MODKEY,			XK_0,	       view,                   {.ui = ~0 } },
 	//{ MODKEY,			XK_asterisk,	       view,                   {.ui = ~0 } },
@@ -274,7 +260,7 @@ static const Key keys[] = {
 	{ MODKEY,			            XK_j,       focusmon,               {.i = -1 } },
 	{ MODKEY|ShiftMask,		        XK_j,       tagmon,                 {.i = -1 } },
 	{ MODKEY,			            XK_k,      focusmon,               {.i = +1 } },
-	{ MODKEY|ShiftMask,		        XK_k,      tagmon,                 {.i = +1 } },
+	{ MODKEY|ShiftMask,		        XK_k,      spawn,                 SHCMD("~/dotfiles/.scripts/toggle-keyboard.sh")},
 
 	{ MODKEY,			            XK_Page_Up,    shiftview,              { .i = -1 } },
 	{ MODKEY|ShiftMask,		        XK_Page_Up,    shifttag,               { .i = -1 } },
