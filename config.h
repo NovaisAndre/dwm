@@ -15,7 +15,7 @@ static unsigned int gappov    = 4 * gapmodifier;       /* vert outer gap between
 
 
 static int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
-static int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
+static int smartgaps          = 1;        /* 1 means no outer gap when there is only one window */
 static int showbar            = 0;        /* 0 means no bar */
 static int topbar             = 0;        /* 0 means bottom bar */
 static char *fonts[]          = { "monospace:size=12", "System San Francisco Display:pixelsize=12:antialias=true:autohint=true", "-misc-kochi gothic-medium-r-normal-*-12-0-0-0-p-0-jisx0201.1976-0"  };
