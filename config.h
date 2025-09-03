@@ -15,16 +15,16 @@ static unsigned int gappov    = 4 * gapmodifier;       /* vert outer gap between
 
 
 static int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
-static int smartgaps          = 1;        /* 1 means no outer gap when there is only one window */
+static int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static int showbar            = 0;        /* 0 means no bar */
 static int topbar             = 0;        /* 0 means bottom bar */
 static char *fonts[]          = { "monospace:size=12", "System San Francisco Display:pixelsize=12:antialias=true:autohint=true", "-misc-kochi gothic-medium-r-normal-*-12-0-0-0-p-0-jisx0201.1976-0"  };
 static char normbgcolor[]           = "#1a1b26";  // Darker background
-static char normbordercolor[]       = "#24283b";  // from Chrome
                                                   //
 static char normfgcolor[]           = "#c0caf5";  // Foreground text
 static char selfgcolor[]            = "#a9b1d6";  // Selected text
-static char selbordercolor[]       = "#1a1b26";  // Selected Border
+static char normbordercolor[]       = "#1a1b26";  // from Chrome
+static char selbordercolor[]       = "#24283b";  // Selected Border
 static char selbgcolor[]            = "#1a1b26";  // Selected background
 static char *colors[][3] = {
        /*               fg           bg           border   */
@@ -70,7 +70,7 @@ static float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static int nmaster     = 1;    /* number of clients in master area */
 static int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
-#define FORCE_VSPLIT 1  /* nrowgrid layout: force two clients to always split vertically */
+#define FORCE_VSPLIT 1  /* nrowgRid layout: force two clients to always split vertically */
 #include "vanitygaps.c"
 static const Layout layouts[] = {
 	/* symbol     arrange function */
