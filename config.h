@@ -49,10 +49,6 @@ static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 //static const char *tags[] = { "!", "{", "[", "(", "=", "&", ")", "]", "}" };
 
 static const Rule rules[] = {
-	/* xprop(1):
-	 *	WM_CLASS(STRING) = instance, class
-	 *	WM_NAME(STRING) = title
-	*/
 	/* class                instance        title       	 tags mask    isfloating   isterminal  noswallow  monitor */
 	{ "Gimp",               NULL,           NULL,            1 << 8,      0,           0,          0,         -1 },
 	{ TERMCLASS,            NULL,           NULL,       	 0,           0,           1,          0,         -1 },
@@ -110,10 +106,7 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-// static const char *termcmd[]  = { TERMINAL, NULL };
-// static const char *termcmd[]  = { TERMINAL, "-e", "tmux", "new-window", "-t", "fastterm", NULL };
 static const char *termcmd[] = { TERMINAL, "-e", "sh", "-c", "tmux new-window -t fastterm; tmux attach -t fastterm", NULL };
-
 static const char *reusecmd[] = { TERMINAL, "-e", "tmux", "attach", "-t", "fastterm", NULL };
 
 
@@ -268,18 +261,18 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,		        XK_Page_Down,  shifttag,               { .i = +1 } },
 	//{ MODKEY,			XK_Insert,     spawn,                  SHCMD("xdotool type $(grep -v '^#' ~/.local/share/larbs/snippets | dmenu -i -l 50 | cut -d' ' -f1)") },
 
-	{ MODKEY,		            	XK_F1,         spawn,                  SHCMD("python3 ~/dotfiles/.scripts/showtime.py open_music") },
-	{ MODKEY,		                XK_F2,         spawn,                  SHCMD("python3 ~/dotfiles/.scripts/showtime.py open_notes_obsidian") },
-	{ MODKEY,		                XK_F3,         spawn,                  SHCMD("python3 ~/dotfiles/.scripts/showtime.py open_dev_setup") },
-	{ MODKEY,		                XK_F4,         spawn,                  SHCMD("python3 ~/dotfiles/.scripts/showtime.py ascii_image_converter") },
-	{ MODKEY,		                XK_F5,         spawn,                   SHCMD("python3 ~/dotfiles/.scripts/showtime.py spiral") },
-	{ MODKEY,		                XK_F6,         spawn,                  SHCMD("python3 ~/dotfiles/.scripts/showtime.py curtains") },
-	{ MODKEY,		                XK_F7,         spawn,                  SHCMD("python3 ~/dotfiles/.scripts/showtime.py open_music_thematic") },
-	{ MODKEY,		                XK_F8,         spawn,                  SHCMD("python3 ~/dotfiles/.scripts/showtime.py open_music") },
-	{ MODKEY,		                XK_F9,         spawn,                  SHCMD("python3 ~/dotfiles/.scripts/showtime.py open_music") },
-	{ MODKEY,		                XK_F10,        spawn,                  {.v = (const char*[]){ "unmounter", NULL } } },
-	{ MODKEY,		                XK_F11,        spawn,                  SHCMD("mpv --untimed --no-cache --no-osc --no-input-default-bindings --profile=low-latency --input-conf=/dev/null --title=webcam $(ls /dev/video[0,2,4,6,8] | tail -n 1)") },
-	{ MODKEY,		                XK_F12,        spawn,                  SHCMD("remaps") },
+	// { MODKEY,		            	XK_F1,         spawn,                  SHCMD("python3 ~/dotfiles/.scripts/showtime.py open_music") },
+	// { MODKEY,		                XK_F2,         spawn,                  SHCMD("python3 ~/dotfiles/.scripts/showtime.py open_notes_obsidian") },
+	// { MODKEY,		                XK_F3,         spawn,                  SHCMD("python3 ~/dotfiles/.scripts/showtime.py open_dev_setup") },
+	// { MODKEY,		                XK_F4,         spawn,                  SHCMD("python3 ~/dotfiles/.scripts/showtime.py ascii_image_converter") },
+	// { MODKEY,		                XK_F5,         spawn,                   SHCMD("python3 ~/dotfiles/.scripts/showtime.py spiral") },
+	// { MODKEY,		                XK_F6,         spawn,                  SHCMD("python3 ~/dotfiles/.scripts/showtime.py curtains") },
+	// { MODKEY,		                XK_F7,         spawn,                  SHCMD("python3 ~/dotfiles/.scripts/showtime.py open_music_thematic") },
+	// { MODKEY,		                XK_F8,         spawn,                  SHCMD("python3 ~/dotfiles/.scripts/showtime.py open_music") },
+	// { MODKEY,		                XK_F9,         spawn,                  SHCMD("python3 ~/dotfiles/.scripts/showtime.py open_music") },
+	// { MODKEY,		                XK_F10,        spawn,                  {.v = (const char*[]){ "unmounter", NULL } } },
+	// { MODKEY,		                XK_F11,        spawn,                  SHCMD("mpv --untimed --no-cache --no-osc --no-input-default-bindings --profile=low-latency --input-conf=/dev/null --title=webcam $(ls /dev/video[0,2,4,6,8] | tail -n 1)") },
+	// { MODKEY,		                XK_F12,        spawn,                  SHCMD("remaps") },
 	{ MODKEY,		                XK_space,      zoom,                   {0} },
 	{ MODKEY|ShiftMask,             XK_space,      togglefloating,         {0} },
 
@@ -291,13 +284,19 @@ static const Key keys[] = {
 	//{ MODKEY,			XK_Delete,     spawn,                  {.v = (const char*[]){ "dmenurecord", "kill", NULL } } },
 	//{ MODKEY,			XK_Scroll_Lock, spawn,                 SHCMD("killall screenkey || screenkey &") },
 
-	{ 0, XF86XK_AudioMute,                         spawn,                  SHCMD("~/dotfiles/.scripts/volume-notify.sh mute") },
-	{ MODKEY, XF86XK_AudioMute,                    spawn,                  SHCMD("~/dotfiles/.scripts/toggle-audio-profile.sh") },
-	{ MODKEY, XK_F9,                               spawn,                  SHCMD("~/dotfiles/.scripts/cycle-audio.sh") },
-	{ 0, XF86XK_AudioRaiseVolume,                  spawn,                  SHCMD("~/dotfiles/.scripts/volume-notify.sh up") },
-	{ ShiftMask, XF86XK_AudioRaiseVolume,          spawn,                  SHCMD("~/dotfiles/.scripts/volume-notify.sh up20") },
-	{ 0, XF86XK_AudioLowerVolume,                  spawn,                  SHCMD("~/dotfiles/.scripts/volume-notify.sh down") },
-    { ShiftMask, XF86XK_AudioLowerVolume,          spawn,                  SHCMD("~/dotfiles/.scripts/volume-notify.sh down20") },
+	//{ 0, XF86XK_AudioMute,                         spawn,                  SHCMD("~/dotfiles/.scripts/volume-notify.sh mute") },
+    //{ MODKEY, XF86XK_AudioMute,                    spawn,                  SHCMD("~/dotfiles/.scripts/toggle-audio-profile.sh") },
+	//{ 0, XF86XK_AudioRaiseVolume,                  spawn,                  SHCMD("~/dotfiles/.scripts/volume-notify.sh up") },
+	//{ ShiftMask, XF86XK_AudioRaiseVolume,          spawn,                  SHCMD("~/dotfiles/.scripts/volume-notify.sh up20") },
+	//{ 0, XF86XK_AudioLowerVolume,                  spawn,                  SHCMD("~/dotfiles/.scripts/volume-notify.sh down") },
+    //{ ShiftMask, XF86XK_AudioLowerVolume,          spawn,                  SHCMD("~/dotfiles/.scripts/volume-notify.sh down20") },
+    { MODKEY,                       XK_F9,         spawn,                  SHCMD("~/dotfiles/.scripts/volume-notify.sh mute") },
+	{ MODKEY|ShiftMask,             XK_F9,         spawn,                  SHCMD("~/dotfiles/.scripts/cycle-audio.sh") },
+    { MODKEY|ShiftMask|ControlMask, XK_F9,         spawn,                  SHCMD("~/dotfiles/.scripts/toggle-audio-profile.sh") },
+	{ MODKEY,                       XK_F11,        spawn,                  SHCMD("~/dotfiles/.scripts/volume-notify.sh up") },
+	{ MODKEY|ShiftMask,             XK_F11,        spawn,                  SHCMD("~/dotfiles/.scripts/volume-notify.sh up20") },
+	{ MODKEY,                       XK_F10,        spawn,                  SHCMD("~/dotfiles/.scripts/volume-notify.sh down") },
+    { MODKEY|ShiftMask,             XK_F11,        spawn,                  SHCMD("~/dotfiles/.scripts/volume-notify.sh down20") },
 	//{ 0, XF86XK_AudioPrev,                         spawn,                  {.v = (const char*[]){ "mpc", "prev", NULL } } },
 	//{ 0, XF86XK_AudioNext,                         spawn,                  {.v = (const char*[]){ "mpc",  "next", NULL } } },
 	//{ 0, XF86XK_AudioPause,                        spawn,                  {.v = (const char*[]){ "mpc", "pause", NULL } } },
@@ -309,21 +308,21 @@ static const Key keys[] = {
 	//{ 0, XF86XK_AudioMicMute,                      spawn,                  SHCMD("pactl set-source-mute @DEFAULT_SOURCE@ toggle") },
 	//{ 0, XF86RFKill,                      spawn,                  SHCMD("pactl set-source-mute @DEFAULT_SOURCE@ toggle") },
 	/* { 0, XF86XK_PowerOff,                       spawn,                  {.v = (const char*[]){ "sysact", NULL } } }, */
-	{ 0, XF86XK_Calculator,                        spawn,                  {.v = (const char*[]){ TERMINAL, "-e", "bc", "-l", NULL } } },
-	{ 0, XF86XK_Sleep,                             spawn,                  {.v = (const char*[]){ "sudo", "-A", "zzz", NULL } } },
-	{ 0, XF86XK_WWW,                               spawn,                  {.v = (const char*[]){ BROWSER, NULL } } },
-	{ 0, XF86XK_DOS,                               spawn,                  {.v = termcmd } },
-	{ 0, XF86XK_ScreenSaver,                       spawn,                  SHCMD("slock & xset dpms force off; mpc pause; pauseallmpv") },
-	{ 0, XF86XK_TaskPane,                          spawn,                  {.v = (const char*[]){ TERMINAL, "-e", "htop", NULL } } },
-	{ 0, XF86XK_Mail,                              spawn,                  SHCMD(TERMINAL " -e neomutt ; pkill -RTMIN+12 dwmblocks") },
-	{ 0, XF86XK_MyComputer,                        spawn,                  {.v = (const char*[]){ TERMINAL, "-e",  "lfub",  "/", NULL } } },
-	/* { 0, XF86XK_Battery,                        spawn,                  SHCMD("") }, */
-	{ 0, XF86XK_Launch1,                           spawn,                  {.v = (const char*[]){ "xset", "dpms", "force", "off", NULL } } },
-	{ 0, XF86XK_TouchpadToggle,                    spawn,                  SHCMD("(synclient | grep 'TouchpadOff.*1' && synclient TouchpadOff=0) || synclient TouchpadOff=1") },
-	{ 0, XF86XK_TouchpadOff,                       spawn,                  {.v = (const char*[]){ "synclient", "TouchpadOff=1", NULL } } },
-	{ 0, XF86XK_TouchpadOn,                        spawn,                  {.v = (const char*[]){ "synclient", "TouchpadOff=0", NULL } } },
-	{ 0, XF86XK_MonBrightnessUp,                   spawn,                  {.v = (const char*[]){ "xbacklight", "-inc", "15", NULL } } },
-	{ 0, XF86XK_MonBrightnessDown,                 spawn,                  {.v = (const char*[]){ "xbacklight", "-dec", "15", NULL } } },
+	//{ 0, XF86XK_Calculator,                        spawn,                  {.v = (const char*[]){ TERMINAL, "-e", "bc", "-l", NULL } } },
+	//{ 0, XF86XK_Sleep,                             spawn,                  {.v = (const char*[]){ "sudo", "-A", "zzz", NULL } } },
+	//{ 0, XF86XK_WWW,                               spawn,                  {.v = (const char*[]){ BROWSER, NULL } } },
+	//{ 0, XF86XK_DOS,                               spawn,                  {.v = termcmd } },
+	//{ 0, XF86XK_ScreenSaver,                       spawn,                  SHCMD("slock & xset dpms force off; mpc pause; pauseallmpv") },
+	//{ 0, XF86XK_TaskPane,                          spawn,                  {.v = (const char*[]){ TERMINAL, "-e", "htop", NULL } } },
+	//{ 0, XF86XK_Mail,                              spawn,                  SHCMD(TERMINAL " -e neomutt ; pkill -RTMIN+12 dwmblocks") },
+	//{ 0, XF86XK_MyComputer,                        spawn,                  {.v = (const char*[]){ TERMINAL, "-e",  "lfub",  "/", NULL } } },
+	///* { 0, XF86XK_Battery,                        spawn,                  SHCMD("") }, */
+	//{ 0, XF86XK_Launch1,                           spawn,                  {.v = (const char*[]){ "xset", "dpms", "force", "off", NULL } } },
+	//{ 0, XF86XK_TouchpadToggle,                    spawn,                  SHCMD("(synclient | grep 'TouchpadOff.*1' && synclient TouchpadOff=0) || synclient TouchpadOff=1") },
+	//{ 0, XF86XK_TouchpadOff,                       spawn,                  {.v = (const char*[]){ "synclient", "TouchpadOff=1", NULL } } },
+	//{ 0, XF86XK_TouchpadOn,                        spawn,                  {.v = (const char*[]){ "synclient", "TouchpadOff=0", NULL } } },
+	//{ 0, XF86XK_MonBrightnessUp,                   spawn,                  {.v = (const char*[]){ "xbacklight", "-inc", "15", NULL } } },
+	//{ 0, XF86XK_MonBrightnessDown,                 spawn,                  {.v = (const char*[]){ "xbacklight", "-dec", "15", NULL } } },
 
 	/* { MODKEY|Mod4Mask,           XK_h,          incrgaps,               {.i = +1 } }, */
 	/* { MODKEY|Mod4Mask,           XK_l,          incrgaps,               {.i = -1 } }, */
