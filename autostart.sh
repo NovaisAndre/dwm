@@ -16,5 +16,9 @@ xset s off
 xset s noblank
 xset -dpms
 
+# Lock after 5 minutes (600 seconds) of inactivity
+# xautolock -time 5 -locker "dm-tool lock" &
+
+
 
 # exec dwm
