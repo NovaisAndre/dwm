@@ -6,7 +6,10 @@ picom --config ~/dotfiles/.config/picom/picom.conf &
 ~/dotfiles/.scripts/cycle_wallpapers.sh &
 dunst &
 #xrandr --output eDP-1 --primary --mode 1366x768 --pos 277x1080 --rotate normal --output HDMI-1 --mode 1920x1080 --pos 0x0 --rotate normal &
-xmodmap ~/.Xmodmap &
+if [ "$USER" = "husky" ]; then
+  xmodmap ~/dotfiles/.XmodmapUs
+fi
+
 #redshift -l -3:-38 & 
 redshift -m vidmode -l -3.7319:-38.5267
 #xbindkeys &
