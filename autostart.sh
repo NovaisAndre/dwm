@@ -11,7 +11,7 @@ if [ "$USER" = "husky" ]; then
 fi
 
 #redshift -l -3:-38 & 
-redshift -m vidmode -l -3.7319:-38.5267
+redshift &
 #xbindkeys &
 #dwmblocks & 
 # ibus-daemon -rxRd &
