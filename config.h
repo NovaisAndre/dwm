@@ -15,7 +15,7 @@ static unsigned int gappov    = 4 * gapmodifier;       /* vert outer gap between
 
 
 static int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
-static int smartgaps          = 1;        /* 1 means no outer gap when there is only one window */
+static int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static int showbar            = 0;        /* 0 means no bar */
 static int topbar             = 0;        /* 0 means bottom bar */
 static char *fonts[]          = { "monospace:size=12", "System San Francisco Display:pixelsize=12:antialias=true:autohint=true", "-misc-kochi gothic-medium-r-normal-*-12-0-0-0-p-0-jisx0201.1976-0"  };
@@ -208,13 +208,16 @@ static const Key keys[] = {
 	{ MODKEY,			            XK_s,          togglesticky,           {0} },
 	{ MODKEY|ShiftMask,		        XK_s,          spawn,                  SHCMD("~/dotfiles/.scripts/ssh-list.sh") },
 	{ MODKEY,			            XK_d,          spawn,                  SHCMD("rofi -modi drun,run -show drun" ) },
-	{ MODKEY,			            XK_c,          spawn,                  {.v = (const char*[]){ "mate-calc", NULL } } },
 	//{ MODKEY|ShiftMask,		XK_d,          spawn,                  {.v = (const char*[]){ "passmenu", NULL } } },
 	{ MODKEY,			            XK_f,          togglefullscr,          {0} },
 	{ MODKEY|ShiftMask,		        XK_f,          setlayout,              {.v = &layouts[8]} },
 	{ MODKEY,			            XK_g,          shiftview,              { .i = -1 } },
 	{ MODKEY|ShiftMask,		        XK_g,          shifttag,               { .i = -1 } },
 	{ MODKEY,			            XK_h,          setmfact,               {.f = -0.05} },
+	{ MODKEY,			            XK_j,       focusmon,               {.i = -1 } },
+	{ MODKEY|ShiftMask,		        XK_j,       tagmon,                 {.i = -1 } },
+	{ MODKEY,			            XK_k,      focusmon,               {.i = +1 } },
+	{ MODKEY|ShiftMask,		        XK_k,      spawn,                 SHCMD("~/dotfiles/.scripts/toggle-keyboard.sh")},
 	/* J and K are automatically bound above in STACKEYS */
 	{ MODKEY,			            XK_l,          setmfact,               {.f = +0.05} },
 	{ MODKEY,			            XK_semicolon,  shiftview,              { .i = 1 } },
@@ -230,30 +233,26 @@ static const Key keys[] = {
     // 3 - Third Row
 
 	{ MODKEY,			            XK_z,          incrgaps,               {.i = +3 } },
-	/* { MODKEY|ShiftMask,		XK_z,          spawn,                  SHCMD("") }, */
+	/* { MODKEY|ShiftMask,		    XK_z,          spawn,                  SHCMD("") }, */
 	{ MODKEY,			            XK_x,          incrgaps,               {.i = -3 } },
 	{ MODKEY|ShiftMask,		        XK_x,          spawn,                  SHCMD("i3lock -f -c 1A1B26 -i ~/.wallpapers/.not-using/tokyo.png && systemctl suspend") }, 
 	//{ MODKEY,			XK_c,          spawn,                  {.v = (const char*[]){ TERMINAL, "-e", "profanity", NULL } } },
 	{ MODKEY,			            XK_c,          spawn,                  {.v = (const char*[]){ "mate-calc", NULL } } },
-    { MODKEY|ShiftMask,		        XK_c,          spawn,              SHCMD("~/dotfiles/.scripts/select-quotes.sh") }, 
-    { MODKEY|ShiftMask|ControlMask,	XK_c,          spawn,  SHCMD("~/dotfiles/.scripts/youtube-cross-fade-start.sh") }, 
+    { MODKEY|ShiftMask,		        XK_c,          spawn,                  SHCMD("~/dotfiles/.scripts/select-quotes.sh") }, 
+    { MODKEY|ShiftMask|ControlMask,	XK_c,          spawn,                  SHCMD("~/dotfiles/.scripts/youtube-cross-fade-start.sh") }, 
 	/* V is automatically bound above in STACKKEYS */
 	{ MODKEY,			            XK_b,          togglebar,              {0} },
-    { MODKEY|ShiftMask,		        XK_b,          spawn,              SHCMD("~/dotfiles/.scripts/bt_menu.sh") }, 
+    { MODKEY|ShiftMask,		        XK_b,          spawn,                  SHCMD("~/dotfiles/.scripts/bt_menu.sh") }, 
 	{ MODKEY,			            XK_c,          spawn,                  SHCMD("dunstctl close-all")},
 	{ MODKEY|ShiftMask,	            XK_n,          spawn,                  SHCMD("python3 ~/dotfiles/.scripts/showtime.py") },
 	//{ MODKEY,			            XK_m,          spawn,                  SHCMD() },
-	{ MODKEY|ShiftMask,		        XK_m,          spawn,              SHCMD("/home/andre/dotfiles/.scripts/macros/venv/bin/python ~/dotfiles/.scripts/macros/fightcade_macro.py") },
-	{ MODKEY,		                XK_m,          spawn,              SHCMD("/home/andre/dotfiles/.scripts/macros/venv/bin/python ~/dotfiles/.scripts/macros/fightcade_macro_notebook.py") },
+	//{ MODKEY|ShiftMask,		        XK_m,          spawn,              SHCMD("/home/andre/dotfiles/.scripts/macros/venv/bin/python ~/dotfiles/.scripts/macros/fightcade_macro.py") },
+	//{ MODKEY,		                XK_m,          spawn,              SHCMD("/home/andre/dotfiles/.scripts/macros/venv/bin/python ~/dotfiles/.scripts/macros/fightcade_macro_notebook.py") },
     { MODKEY,			            XK_comma,      spawn,                  SHCMD("/home/andre/dotfiles/.scripts/macros/venv/bin/python ~/dotfiles/.scripts/macros/getCursorPosition.py") },
     { MODKEY|ShiftMask,			    XK_comma,      spawn,          SHCMD("/home/andre/dotfiles/.scripts/macros/venv/bin/python ~/dotfiles/.scripts/macros/shorys.sh") },
     { MODKEY,			            XK_period,     spawn,                  SHCMD("~/dotfiles/.scripts/youtube-download.sh") },
     //{ MODKEY|ShiftMask,		XK_period,     spawn,          SHCMD() },
  
-	{ MODKEY,			            XK_j,       focusmon,               {.i = -1 } },
-	{ MODKEY|ShiftMask,		        XK_j,       tagmon,                 {.i = -1 } },
-	{ MODKEY,			            XK_k,      focusmon,               {.i = +1 } },
-	{ MODKEY|ShiftMask,		        XK_k,      spawn,                 SHCMD("~/dotfiles/.scripts/toggle-keyboard.sh")},
 
 	{ MODKEY,			            XK_Page_Up,    shiftview,              { .i = -1 } },
 	{ MODKEY|ShiftMask,		        XK_Page_Up,    shifttag,               { .i = -1 } },
@@ -265,7 +264,7 @@ static const Key keys[] = {
 	// { MODKEY,		                XK_F2,         spawn,                  SHCMD("python3 ~/dotfiles/.scripts/showtime.py open_notes_obsidian") },
 	// { MODKEY,		                XK_F3,         spawn,                  SHCMD("python3 ~/dotfiles/.scripts/showtime.py open_dev_setup") },
 	// { MODKEY,		                XK_F4,         spawn,                  SHCMD("python3 ~/dotfiles/.scripts/showtime.py ascii_image_converter") },
-	// { MODKEY,		                XK_F5,         spawn,                   SHCMD("python3 ~/dotfiles/.scripts/showtime.py spiral") },
+	// { MODKEY,		                XK_F5,         spawn,                  SHCMD("python3 ~/dotfiles/.scripts/showtime.py spiral") },
 	// { MODKEY,		                XK_F6,         spawn,                  SHCMD("python3 ~/dotfiles/.scripts/showtime.py curtains") },
 	// { MODKEY,		                XK_F7,         spawn,                  SHCMD("python3 ~/dotfiles/.scripts/showtime.py open_music_thematic") },
 	// { MODKEY,		                XK_F8,         spawn,                  SHCMD("python3 ~/dotfiles/.scripts/showtime.py open_music") },
@@ -275,36 +274,22 @@ static const Key keys[] = {
 	// { MODKEY,		                XK_F12,        spawn,                  SHCMD("remaps") },
 	{ MODKEY,		                XK_space,      zoom,                   {0} },
 	{ MODKEY|ShiftMask,             XK_space,      togglefloating,         {0} },
-
-	//{ 0,				XK_Print,      spawn,                  SHCMD("maim pic-full-$(date '+%y%m%d-%H%M-%S').png") },
 	{ 0,				            XK_Print,      spawn,                  SHCMD("~/dotfiles/.scripts/screenshot.sh") },
-	//{ ShiftMask,			XK_Print,      spawn,                  {.v = (const char*[]){ "maimpick", NULL } } },
-	//{ MODKEY,			XK_Print,      spawn,		       {.v = (const char*[]){ "~/dotfiles/.scripts/screenshot.sh" } } },
-	//{ MODKEY|ShiftMask,		XK_Print,      spawn,                  {.v = (const char*[]){ "dmenurecord", "kill", NULL } } },
-	//{ MODKEY,			XK_Delete,     spawn,                  {.v = (const char*[]){ "dmenurecord", "kill", NULL } } },
-	//{ MODKEY,			XK_Scroll_Lock, spawn,                 SHCMD("killall screenkey || screenkey &") },
-
-	//{ 0, XF86XK_AudioMute,                         spawn,                  SHCMD("~/dotfiles/.scripts/volume-notify.sh mute") },
-    //{ MODKEY, XF86XK_AudioMute,                    spawn,                  SHCMD("~/dotfiles/.scripts/toggle-audio-profile.sh") },
-	//{ 0, XF86XK_AudioRaiseVolume,                  spawn,                  SHCMD("~/dotfiles/.scripts/volume-notify.sh up") },
-	//{ ShiftMask, XF86XK_AudioRaiseVolume,          spawn,                  SHCMD("~/dotfiles/.scripts/volume-notify.sh up20") },
-	//{ 0, XF86XK_AudioLowerVolume,                  spawn,                  SHCMD("~/dotfiles/.scripts/volume-notify.sh down") },
-    //{ ShiftMask, XF86XK_AudioLowerVolume,          spawn,                  SHCMD("~/dotfiles/.scripts/volume-notify.sh down20") },
     { MODKEY,                       XK_F9,         spawn,                  SHCMD("~/dotfiles/.scripts/volume-notify.sh mute") },
 	{ MODKEY|ShiftMask,             XK_F9,         spawn,                  SHCMD("~/dotfiles/.scripts/cycle-audio.sh") },
     { MODKEY|ShiftMask|ControlMask, XK_F9,         spawn,                  SHCMD("~/dotfiles/.scripts/toggle-audio-profile.sh") },
     { MODKEY,                       XK_F10,        spawn,                  SHCMD("~/dotfiles/.scripts/volume-notify.sh down") },
-    { MODKEY|ShiftMask,                       XK_F10,        spawn,                  SHCMD("~/dotfiles/.scripts/volume-notify.sh down20") },
+    { MODKEY|ShiftMask,             XK_F10,        spawn,                  SHCMD("~/dotfiles/.scripts/volume-notify.sh down20") },
 	{ MODKEY,                       XK_F11,        spawn,                  SHCMD("~/dotfiles/.scripts/volume-notify.sh up") },
 	{ MODKEY|ShiftMask,             XK_F11,        spawn,                  SHCMD("~/dotfiles/.scripts/volume-notify.sh up20") },
 
     { MODKEY,                       XK_F1,         spawn,                  SHCMD("~/dotfiles/.scripts/volume-notify.sh mute") },
 	{ MODKEY|ShiftMask,             XK_F1,         spawn,                  SHCMD("~/dotfiles/.scripts/cycle-audio.sh") },
     { MODKEY|ShiftMask|ControlMask, XK_F1,         spawn,                  SHCMD("~/dotfiles/.scripts/toggle-audio-profile.sh") },
-	{ MODKEY,                       XK_F2,        spawn,                  SHCMD("~/dotfiles/.scripts/volume-notify.sh down") },
-	{ MODKEY|ShiftMask,                       XK_F2,        spawn,                  SHCMD("~/dotfiles/.scripts/volume-notify.sh down20") },
-    { MODKEY,                       XK_F3,        spawn,                  SHCMD("~/dotfiles/.scripts/volume-notify.sh up") },
-    { MODKEY|ShiftMask,             XK_F3,        spawn,                  SHCMD("~/dotfiles/.scripts/volume-notify.sh up20") },
+	{ MODKEY,                       XK_F2,         spawn,                  SHCMD("~/dotfiles/.scripts/volume-notify.sh down") },
+	{ MODKEY|ShiftMask,             XK_F2,         spawn,                  SHCMD("~/dotfiles/.scripts/volume-notify.sh down20") },
+    { MODKEY,                       XK_F3,         spawn,                  SHCMD("~/dotfiles/.scripts/volume-notify.sh up") },
+    { MODKEY|ShiftMask,             XK_F3,         spawn,                  SHCMD("~/dotfiles/.scripts/volume-notify.sh up20") },
 	//{ 0, XF86XK_AudioPrev,                         spawn,                  {.v = (const char*[]){ "mpc", "prev", NULL } } },
 	//{ 0, XF86XK_AudioNext,                         spawn,                  {.v = (const char*[]){ "mpc",  "next", NULL } } },
 	//{ 0, XF86XK_AudioPause,                        spawn,                  {.v = (const char*[]){ "mpc", "pause", NULL } } },
@@ -314,8 +299,8 @@ static const Key keys[] = {
 	//{ 0, XF86XK_AudioForward,                      spawn,                  {.v = (const char*[]){ "mpc", "seek", "+10", NULL } } },
 	//{ 0, XF86XK_AudioMedia,                        spawn,                  {.v = (const char*[]){ TERMINAL, "-e", "ncmpcpp", NULL } } },
 	//{ 0, XF86XK_AudioMicMute,                      spawn,                  SHCMD("pactl set-source-mute @DEFAULT_SOURCE@ toggle") },
-	//{ 0, XF86RFKill,                      spawn,                  SHCMD("pactl set-source-mute @DEFAULT_SOURCE@ toggle") },
-	/* { 0, XF86XK_PowerOff,                       spawn,                  {.v = (const char*[]){ "sysact", NULL } } }, */
+	//{ 0, XF86RFKill,                               spawn,                  SHCMD("pactl set-source-mute @DEFAULT_SOURCE@ toggle") },
+	/* { 0, XF86XK_PowerOff,                         spawn,                  {.v = (const char*[]){ "sysact", NULL } } }, */
 	//{ 0, XF86XK_Calculator,                        spawn,                  {.v = (const char*[]){ TERMINAL, "-e", "bc", "-l", NULL } } },
 	//{ 0, XF86XK_Sleep,                             spawn,                  {.v = (const char*[]){ "sudo", "-A", "zzz", NULL } } },
 	//{ 0, XF86XK_WWW,                               spawn,                  {.v = (const char*[]){ BROWSER, NULL } } },
