@@ -9,6 +9,7 @@ dunst &
 if [ "$USER" = "husky" ]; then
   xmodmap ~/dotfiles/.XmodmapUs
 fi
+#sxhkd &
 
 #redshift -l -3:-38 & 
 redshift &
