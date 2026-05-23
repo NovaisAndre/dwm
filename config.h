@@ -209,7 +209,7 @@ static const Key keys[] = {
 	{ MODKEY,			            XK_a,          togglegaps,             {0} },
 	{ MODKEY|ShiftMask,		        XK_a,          defaultgaps,            {0} },
 	//{ MODKEY,			            XK_s,          togglesticky,           {0} },
-	{ MODKEY,			            XK_s,          spawn,                  SHCMD("~/dotfiles/.scripts/soundboard.sh") },
+{ MODKEY,			            XK_s,          spawn,                  SHCMD("~/dotfiles/.scripts/soundboard.sh") },
 	{ MODKEY|ShiftMask,		        XK_s,          spawn,                  SHCMD("~/dotfiles/.scripts/ssh-list.sh") },
 	{ MODKEY,			            XK_d,          spawn,                  SHCMD("rofi -modi drun,run -show drun" ) },
 	//{ MODKEY|ShiftMask,		XK_d,          spawn,                  {.v = (const char*[]){ "passmenu", NULL } } },
