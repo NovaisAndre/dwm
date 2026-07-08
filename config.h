@@ -172,6 +172,7 @@ static const Key keys[] = {
 	//{ MODKEY,			XK_equal,      spawn,                  SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+; kill -44 $(pidof dwmblocks)") },
 	//{ MODKEY|ShiftMask, XK_equal,      spawn,                  SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 15%+; kill -44 $(pidof dwmblocks)") },
 	//{ MODKEY,			XK_BackSpace,  spawn,                  {.v = (const char*[]){ "sysact", NULL } } },
+	{ MODKEY|ShiftMask,		        XK_k,      spawn,                 SHCMD("~/dotfiles/.scripts/toggle-keyboard.sh")},
 	//{ MODKEY|ShiftMask,		XK_BackSpace,  spawn,                  {.v = (const char*[]){ "sysact", NULL } } },
 
     // 1 - First Row
@@ -180,7 +181,9 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,			XK_q,          killclient,             {0} },
 	{ MODKEY,			XK_w,          spawn,                  {.v = (const char*[]){ BROWSER, NULL } } },
 	{ MODKEY|ShiftMask,		XK_w,          spawn,              SHCMD("~/dotfiles/.scripts/set_wallpaper.sh") },
-	{ MODKEY,			XK_e,          spawn,                  SHCMD("~/dotfiles/.scripts/emoji-picker.sh") },
+	//{ MODKEY,			XK_e,          spawn,                  SHCMD("~/dotfiles/.scripts/emoji-picker.sh") },
+	{ MODKEY,			            XK_e,          setmfact,               {.f = -0.05} },
+	{ MODKEY,			            XK_r,          setmfact,               {.f = +0.05} },
 	//{ MODKEY|ShiftMask,		XK_e,          spawn,          SHCMD() },
 	//{ MODKEY,			XK_r,          spawn,                  SHCMD() },
 	//{ MODKEY|ShiftMask,		XK_r,          spawn,          SHCMD() },
@@ -213,13 +216,11 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,		        XK_f,          setlayout,              {.v = &layouts[8]} },
 	{ MODKEY,			            XK_g,          shiftview,              { .i = -1 } },
 	{ MODKEY|ShiftMask,		        XK_g,          shifttag,               { .i = -1 } },
-	{ MODKEY,			            XK_h,          setmfact,               {.f = -0.05} },
-	{ MODKEY,			            XK_j,       focusmon,               {.i = -1 } },
-	{ MODKEY|ShiftMask,		        XK_j,       tagmon,                 {.i = -1 } },
-	{ MODKEY,			            XK_k,      focusmon,               {.i = +1 } },
+	//{ MODKEY,			            XK_j,       focusmon,               {.i = -1 } },
+	//{ MODKEY|ShiftMask,		        XK_j,       tagmon,                 {.i = -1 } },
+	//{ MODKEY,			            XK_k,      focusmon,               {.i = +1 } },
 	{ MODKEY|ShiftMask,		        XK_k,      spawn,                 SHCMD("~/dotfiles/.scripts/toggle-keyboard.sh")},
 	/* J and K are automatically bound above in STACKEYS */
-	{ MODKEY,			            XK_l,          setmfact,               {.f = +0.05} },
 	{ MODKEY,			            XK_semicolon,  shiftview,              { .i = 1 } },
 	{ MODKEY|ShiftMask,		        XK_semicolon,  shifttag,               { .i = 1 } },
 	{ MODKEY,			            XK_apostrophe, togglescratch,          {.ui = 1} },
@@ -234,6 +235,7 @@ static const Key keys[] = {
 
 	{ MODKEY,			            XK_z,          incrgaps,               {.i = +3 } },
 	/* { MODKEY|ShiftMask,		    XK_z,          spawn,                  SHCMD("") }, */
+	{ MODKEY|ShiftMask,		        XK_z,      spawn,                 SHCMD("~/dotfiles/.scripts/toggle-keyboard.sh")},
 	{ MODKEY,			            XK_x,          incrgaps,               {.i = -3 } },
 	{ MODKEY|ShiftMask,		        XK_x,          spawn,                  SHCMD("i3lock -f -c 1A1B26 -i ~/.wallpapers/.not-using/tokyo.png && systemctl suspend") }, 
 	//{ MODKEY,			XK_c,          spawn,                  {.v = (const char*[]){ TERMINAL, "-e", "profanity", NULL } } },
@@ -245,6 +247,8 @@ static const Key keys[] = {
     { MODKEY|ShiftMask,		        XK_b,          spawn,                  SHCMD("~/dotfiles/.scripts/bt_menu.sh") }, 
 	{ MODKEY,			            XK_c,          spawn,                  SHCMD("dunstctl close-all")},
 	{ MODKEY|ShiftMask,	            XK_n,          spawn,                  SHCMD("python3 ~/dotfiles/.scripts/showtime.py") },
+	{ MODKEY,			            XK_m,       focusmon,               {.i = -1 } },
+	{ MODKEY|ShiftMask,		        XK_m,       tagmon,                 {.i = -1 } },
 	//{ MODKEY,			            XK_m,          spawn,                  SHCMD() },
 	//{ MODKEY|ShiftMask,		        XK_m,          spawn,              SHCMD("/home/andre/dotfiles/.scripts/macros/venv/bin/python ~/dotfiles/.scripts/macros/fightcade_macro.py") },
 	//{ MODKEY,		                XK_m,          spawn,              SHCMD("/home/andre/dotfiles/.scripts/macros/venv/bin/python ~/dotfiles/.scripts/macros/fightcade_macro_notebook.py") },
