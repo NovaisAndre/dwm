@@ -172,7 +172,7 @@ static const Key keys[] = {
 	//{ MODKEY,			XK_equal,      spawn,                  SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+; kill -44 $(pidof dwmblocks)") },
 	//{ MODKEY|ShiftMask, XK_equal,      spawn,                  SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 15%+; kill -44 $(pidof dwmblocks)") },
 	//{ MODKEY,			XK_BackSpace,  spawn,                  {.v = (const char*[]){ "sysact", NULL } } },
-	{ MODKEY|ShiftMask,		        XK_k,      spawn,                 SHCMD("~/dotfiles/.scripts/toggle-keyboard.sh")},
+	{ MODKEY|ShiftMask,		        XK_BackSpace,      spawn,                 SHCMD("~/dotfiles/.scripts/toggle-keyboard.sh")},
 	//{ MODKEY|ShiftMask,		XK_BackSpace,  spawn,                  {.v = (const char*[]){ "sysact", NULL } } },
 
     // 1 - First Row
@@ -211,6 +211,7 @@ static const Key keys[] = {
 	{ MODKEY,			            XK_s,          togglesticky,           {0} },
 	{ MODKEY|ShiftMask,		        XK_s,          spawn,                  SHCMD("~/dotfiles/.scripts/ssh-list.sh") },
 	{ MODKEY,			            XK_d,          spawn,                  SHCMD("rofi -modi drun,run -show drun" ) },
+    { MODKEY,			            XK_s,          spawn,                  SHCMD("~/dotfiles/.scripts/soundboard.sh") },
 	//{ MODKEY|ShiftMask,		XK_d,          spawn,                  {.v = (const char*[]){ "passmenu", NULL } } },
 	{ MODKEY,			            XK_f,          togglefullscr,          {0} },
 	{ MODKEY|ShiftMask,		        XK_f,          setlayout,              {.v = &layouts[8]} },
