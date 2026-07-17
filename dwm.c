@@ -2245,6 +2245,7 @@ updategeom(void)
 				m->mx = m->wx = unique[i].x_org;
 				m->my = m->wy = unique[i].y_org;
 				m->mw = m->ww = unique[i].width;
+                m->ww = 1280;   // use only the left ~2/3
 				m->mh = m->wh = unique[i].height;
 				updatebarpos(m);
 			}
