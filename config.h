@@ -179,6 +179,7 @@ static const Key keys[] = {
 	{ MODKEY,			XK_Tab,        view,                   {0} },
 	//{ MODKEY|ShiftMask,		XK_Tab,	       spawn,                  SHCMD("") }, 
 	{ MODKEY|ShiftMask,			XK_q,          killclient,             {0} },
+	{ MODKEY,			            XK_q,          spawn,              SHCMD("~/personal/projects/papibaquigrafo/scripts/push_to_talk.sh toggle") },
 	{ MODKEY,			XK_w,          spawn,                  {.v = (const char*[]){ BROWSER, NULL } } },
 	{ MODKEY|ShiftMask,		XK_w,          spawn,              SHCMD("~/dotfiles/.scripts/set_wallpaper.sh") },
 	//{ MODKEY,			XK_e,          spawn,                  SHCMD("~/dotfiles/.scripts/emoji-picker.sh") },
