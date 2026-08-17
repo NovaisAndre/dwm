@@ -16,6 +16,7 @@ redshift &
 #xbindkeys &
 #dwmblocks & 
 # ibus-daemon -rxRd &
+ibus-daemon -drx
 xset s off
 xset s noblank
 xset -dpms
