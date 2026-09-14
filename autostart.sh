@@ -22,7 +22,7 @@ xset s noblank
 xset -dpms
 
 xset s 600 600 &
-xss-lock --transfer-sleep-lock -- i3lock -i ~/dotfiles/.wallpapers/archive/lock.png --nofork &
+xss-lock --transfer-sleep-lock -- i3lock -i ~/dotfiles/.wallpapers/archive/lock.png --nofork --bg-max &
 
 # Lock after 5 minutes (600 seconds) of inactivity
 # xautolock -time 5 -locker "dm-tool lock" &
