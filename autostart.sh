@@ -16,7 +16,18 @@ redshift &
 #xbindkeys &
 #dwmblocks & 
 # ibus-daemon -rxRd &
+<<<<<<< Updated upstream
 ibus-daemon -drx
+=======
+# start with the regular keyboard active, not the last-used IME engine
+( sleep 2 && ibus engine xkb:br::por ) &
+# ibus resets the X keyboard map when switching back to the br engine,
+# which breaks the CapsLock-as-mod custom .Xmodmap; keep it applied
+( while :; do
+    xmodmap -pke 2>/dev/null | grep -q 'keycode  66 = Caps_Lock' && xmodmap ~/.Xmodmap
+    sleep 1
+  done ) &
+>>>>>>> Stashed changes
 xset s off
 xset s noblank
 xset -dpms
