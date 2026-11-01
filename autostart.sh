@@ -16,7 +16,6 @@ redshift &
 #xbindkeys &
 #dwmblocks & 
 # ibus-daemon -rxRd &
-<<<<<<< Updated upstream
 ibus-daemon -drx
 =======
 # start with the regular keyboard active, not the last-used IME engine
@@ -27,7 +26,6 @@ ibus-daemon -drx
     xmodmap -pke 2>/dev/null | grep -q 'keycode  66 = Caps_Lock' && xmodmap ~/.Xmodmap
     sleep 1
   done ) &
->>>>>>> Stashed changes
 xset s off
 xset s noblank
 xset -dpms
